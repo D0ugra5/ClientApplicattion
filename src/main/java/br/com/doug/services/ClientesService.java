@@ -1,7 +1,9 @@
 package br.com.doug.services;
 
 import br.com.doug.domain.Categoria;
+import br.com.doug.domain.Cliente;
 import br.com.doug.repositories.CategoriaRepository;
+import br.com.doug.repositories.ClienteRepository;
 import br.com.doug.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,16 +11,16 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CategoriaService {
+public class ClientesService {
 
     @Autowired
-    private CategoriaRepository repo;
+    private ClienteRepository repo;
 
-    public Categoria buscar(int id){
-        Optional<Categoria> categoria = repo.findById(id);
+    public Cliente buscar(int id){
+        Optional<Cliente> cliente = repo.findById(id);
 
 
 
-        return categoria.orElseThrow(()-> new ObjectNotFoundException("NOT FOUND"));
+        return cliente.orElseThrow(()-> new ObjectNotFoundException("NOT FOUND"));
     }
 }

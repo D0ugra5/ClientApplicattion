@@ -1,14 +1,12 @@
 package br.com.doug.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import javax.persistence.*;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,14 +18,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "Categoria")
-public class CategoriaDomain implements Serializable {
+public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
     private String nome;
-    @JsonManagedReference
+    @JsonIgnore
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos;
 }
